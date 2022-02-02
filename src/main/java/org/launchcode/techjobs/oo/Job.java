@@ -19,6 +19,7 @@ public class Job {
     //  the 'id' field.
 
     public Job(String value) {
+        this();
         this.value = value;
     }
 
@@ -29,6 +30,8 @@ public class Job {
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
+
+    public Job(){}
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
