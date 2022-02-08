@@ -18,20 +18,24 @@ public class Job {
     //  other five fields. The second constructor should also call the first in order to initialize
     //  the 'id' field.
 
-    public Job(String value) {
-        this();
-        this.value = value;
+    public Job() {
+        id = nextId;
+        nextId++;
     }
 
     public Job(String name, Employer employer, Location location, PositionType positionType, CoreCompetency coreCompetency) {
-        this.name = name;
+        this();
+        if (name == null || name.equals("")) {
+            this.name = "Data not available";
+        } else {
+            this.name = name;
+        }
         this.employer = employer;
         this.location = location;
         this.positionType = positionType;
         this.coreCompetency = coreCompetency;
     }
 
-    public Job(){}
 
     // TODO: Add custom equals and hashCode methods. Consider two Job objects "equal" when their id fields
     //  match.
@@ -62,10 +66,6 @@ public class Job {
 
     public int getId() {
         return id;
-    }
-
-    public static int getNextId() {
-        return nextId;
     }
 
     public String getName() {
@@ -106,5 +106,16 @@ public class Job {
 
     public void setCoreCompetency(CoreCompetency coreCompetency) {
         this.coreCompetency = coreCompetency;
+    }
+
+    public String toString() {
+        return "\n" +
+                "ID: " + id + "\n" +
+                "Name: " + name + "\n" +
+                "Employer: " + employer + "\n" +
+                "Location: " + location + "\n" +
+                "Position Type: " + positionType + "\n" +
+                "Core Competency: " + coreCompetency +
+                "\n";
     }
 }
